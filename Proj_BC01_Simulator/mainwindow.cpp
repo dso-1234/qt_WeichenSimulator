@@ -64,17 +64,20 @@ void MainWindow::onErrorQuitClicked()
 
 void MainWindow::animateSwitchPosition(int position)
 {
-    // Animation der Weichenbewegung
-    QPropertyAnimation *animation = new QPropertyAnimation(ui->switchGraphic, "geometry");
-    animation->setDuration(1000);
+    if (ui->switchGraphic) {
+        QPropertyAnimation *animation = new QPropertyAnimation(ui->switchGraphic, "geometry");
+        animation->setDuration(1000);
 
-    if (position == 0) { // Links
-        animation->setEndValue(QRect(50, 100, 50, 50));
-    } else if (position == 1) { // Mitte
-        animation->setEndValue(QRect(150, 100, 50, 50));
-    } else if (position == 2) { // Rechts
-        animation->setEndValue(QRect(250, 100, 50, 50));
+        if (position == 0) { // Links
+            animation->setEndValue(QRect(50, 100, 50, 50));
+        } else if (position == 1) { // Mitte
+            animation->setEndValue(QRect(150, 100, 50, 50));
+        } else if (position == 2) { // Rechts
+            animation->setEndValue(QRect(250, 100, 50, 50));
+        }
+
+        animation->start(QAbstractAnimation::DeleteWhenStopped);
+    } else {
+        qDebug() << "switchGraphic is not defined in the UI.";
     }
-
-    animation->start(QAbstractAnimation::DeleteWhenStopped);
 }

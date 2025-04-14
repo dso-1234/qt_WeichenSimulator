@@ -14,101 +14,175 @@
    <string>Weichensteuerung</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <!-- Zustand -->
-    <item row="0" column="0" colspan="2">
-     <widget class="QLabel" name="stateLabel">
-      <property name="text">
-       <string>Zustand IST: INVALID</string>
-      </property>
-     </widget>
-    </item>
-
-    <!-- LEDs für Endlagesensoren -->
-    <item row="1" column="0">
-     <widget class="QLabel" name="ledEndL">
-      <property name="text">
-       <string>Endlage Links</string>
-      </property>
-      <property name="styleSheet">
-       <string>background-color: gray; border: 1px solid black;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="ledEndR">
-      <property name="text">
-       <string>Endlage Rechts</string>
-      </property>
-      <property name="styleSheet">
-       <string>background-color: gray; border: 1px solid black;</string>
-      </property>
-     </widget>
-    </item>
-
-    <!-- Steuerungssignale -->
-    <item row="2" column="0">
-     <widget class="QPushButton" name="cmdLeButton">
-      <property name="text">
-       <string>cmd Le</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="cmdRiButton">
-      <property name="text">
-       <string>cmd Ri</string>
-      </property>
-     </widget>
-    </item>
-
-    <!-- Fehlermeldungen -->
-    <item row="3" column="0">
-     <widget class="QLabel" name="errorSetLeft">
-      <property name="text">
-       <string>Error Set Left</string>
-      </property>
-      <property name="styleSheet">
-       <string>background-color: gray; border: 1px solid black;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QLabel" name="errorSetRight">
-      <property name="text">
-       <string>Error Set Right</string>
-      </property>
-      <property name="styleSheet">
-       <string>background-color: gray; border: 1px solid black;</string>
-      </property>
-     </widget>
-    </item>
-
-    <!-- Steuerungsbuttons -->
-    <item row="4" column="0">
-     <widget class="QPushButton" name="errorQuit1Button">
-      <property name="text">
-       <string>Error Quit 1</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1">
-     <widget class="QPushButton" name="errorQuit2Button">
-      <property name="text">
-       <string>Error Quit 2</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0" colspan="2">
-     <widget class="QPushButton" name="errorQuit3Button">
-      <property name="text">
-       <string>Error Quit 3</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <widget class="QLabel" name="stateLabel">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>11</y>
+      <width>139</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Zustand IST: INVALID</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ledEndL">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>153</y>
+      <width>99</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string>background-color: gray; border: 1px solid black;</string>
+    </property>
+    <property name="text">
+     <string>Endlage Links</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ledEndR">
+    <property name="geometry">
+     <rect>
+      <x>404</x>
+      <y>153</y>
+      <width>110</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string>background-color: gray; border: 1px solid black;</string>
+    </property>
+    <property name="text">
+     <string>Endlage Rechts</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cmdLeButton">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>296</y>
+      <width>80</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>cmd Le</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cmdRiButton">
+    <property name="geometry">
+     <rect>
+      <x>404</x>
+      <y>296</y>
+      <width>80</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>cmd Ri</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="errorSetLeft">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>332</y>
+      <width>95</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string>background-color: gray; border: 1px solid black;</string>
+    </property>
+    <property name="text">
+     <string>Error Set Left</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="errorSetRight">
+    <property name="geometry">
+     <rect>
+      <x>404</x>
+      <y>332</y>
+      <width>105</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string>background-color: gray; border: 1px solid black;</string>
+    </property>
+    <property name="text">
+     <string>Error Set Right</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="errorQuit1Button">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>474</y>
+      <width>85</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Error Quit 1</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="errorQuit2Button">
+    <property name="geometry">
+     <rect>
+      <x>404</x>
+      <y>474</y>
+      <width>85</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Error Quit 2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="errorQuit3Button">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>510</y>
+      <width>85</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Error Quit 3</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="switchGraphic">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>100</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: blue; border: 1px solid black;</string>
+    </property>
+    <property name="text">
+     <string>Endlage Links</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>

@@ -11,14 +11,12 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QFormLayout>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -27,13 +25,17 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QVBoxLayout *verticalLayout;
-    QFormLayout *formLayout;
-    QLabel *usernameLabel;
-    QLineEdit *usernameLineEdit;
-    QLabel *passwordLabel;
-    QLineEdit *passwordLineEdit;
-    QPushButton *loginButton;
+    QGridLayout *gridLayout;
+    QLabel *stateLabel;
+    QLabel *ledEndL;
+    QLabel *ledEndR;
+    QPushButton *cmdLeButton;
+    QPushButton *cmdRiButton;
+    QLabel *errorSetLeft;
+    QLabel *errorSetRight;
+    QPushButton *errorQuit1Button;
+    QPushButton *errorQuit2Button;
+    QPushButton *errorQuit3Button;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -44,43 +46,61 @@ public:
         MainWindow->resize(800, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        verticalLayout = new QVBoxLayout(centralwidget);
-        verticalLayout->setObjectName("verticalLayout");
-        formLayout = new QFormLayout();
-        formLayout->setObjectName("formLayout");
-        usernameLabel = new QLabel(centralwidget);
-        usernameLabel->setObjectName("usernameLabel");
+        gridLayout = new QGridLayout(centralwidget);
+        gridLayout->setObjectName("gridLayout");
+        stateLabel = new QLabel(centralwidget);
+        stateLabel->setObjectName("stateLabel");
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, usernameLabel);
+        gridLayout->addWidget(stateLabel, 0, 0, 1, 2);
 
-        usernameLineEdit = new QLineEdit(centralwidget);
-        usernameLineEdit->setObjectName("usernameLineEdit");
+        ledEndL = new QLabel(centralwidget);
+        ledEndL->setObjectName("ledEndL");
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, usernameLineEdit);
+        gridLayout->addWidget(ledEndL, 1, 0, 1, 1);
 
-        passwordLabel = new QLabel(centralwidget);
-        passwordLabel->setObjectName("passwordLabel");
+        ledEndR = new QLabel(centralwidget);
+        ledEndR->setObjectName("ledEndR");
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, passwordLabel);
+        gridLayout->addWidget(ledEndR, 1, 1, 1, 1);
 
-        passwordLineEdit = new QLineEdit(centralwidget);
-        passwordLineEdit->setObjectName("passwordLineEdit");
-        passwordLineEdit->setEchoMode(QLineEdit::Password);
+        cmdLeButton = new QPushButton(centralwidget);
+        cmdLeButton->setObjectName("cmdLeButton");
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, passwordLineEdit);
+        gridLayout->addWidget(cmdLeButton, 2, 0, 1, 1);
 
+        cmdRiButton = new QPushButton(centralwidget);
+        cmdRiButton->setObjectName("cmdRiButton");
 
-        verticalLayout->addLayout(formLayout);
+        gridLayout->addWidget(cmdRiButton, 2, 1, 1, 1);
 
-        loginButton = new QPushButton(centralwidget);
-        loginButton->setObjectName("loginButton");
+        errorSetLeft = new QLabel(centralwidget);
+        errorSetLeft->setObjectName("errorSetLeft");
 
-        verticalLayout->addWidget(loginButton);
+        gridLayout->addWidget(errorSetLeft, 3, 0, 1, 1);
+
+        errorSetRight = new QLabel(centralwidget);
+        errorSetRight->setObjectName("errorSetRight");
+
+        gridLayout->addWidget(errorSetRight, 3, 1, 1, 1);
+
+        errorQuit1Button = new QPushButton(centralwidget);
+        errorQuit1Button->setObjectName("errorQuit1Button");
+
+        gridLayout->addWidget(errorQuit1Button, 4, 0, 1, 1);
+
+        errorQuit2Button = new QPushButton(centralwidget);
+        errorQuit2Button->setObjectName("errorQuit2Button");
+
+        gridLayout->addWidget(errorQuit2Button, 4, 1, 1, 1);
+
+        errorQuit3Button = new QPushButton(centralwidget);
+        errorQuit3Button->setObjectName("errorQuit3Button");
+
+        gridLayout->addWidget(errorQuit3Button, 5, 0, 1, 2);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -93,10 +113,21 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        usernameLabel->setText(QCoreApplication::translate("MainWindow", "Username:", nullptr));
-        passwordLabel->setText(QCoreApplication::translate("MainWindow", "Password:", nullptr));
-        loginButton->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Weichensteuerung", nullptr));
+        stateLabel->setText(QCoreApplication::translate("MainWindow", "Zustand IST: INVALID", nullptr));
+        ledEndL->setText(QCoreApplication::translate("MainWindow", "Endlage Links", nullptr));
+        ledEndL->setStyleSheet(QCoreApplication::translate("MainWindow", "background-color: gray; border: 1px solid black;", nullptr));
+        ledEndR->setText(QCoreApplication::translate("MainWindow", "Endlage Rechts", nullptr));
+        ledEndR->setStyleSheet(QCoreApplication::translate("MainWindow", "background-color: gray; border: 1px solid black;", nullptr));
+        cmdLeButton->setText(QCoreApplication::translate("MainWindow", "cmd Le", nullptr));
+        cmdRiButton->setText(QCoreApplication::translate("MainWindow", "cmd Ri", nullptr));
+        errorSetLeft->setText(QCoreApplication::translate("MainWindow", "Error Set Left", nullptr));
+        errorSetLeft->setStyleSheet(QCoreApplication::translate("MainWindow", "background-color: gray; border: 1px solid black;", nullptr));
+        errorSetRight->setText(QCoreApplication::translate("MainWindow", "Error Set Right", nullptr));
+        errorSetRight->setStyleSheet(QCoreApplication::translate("MainWindow", "background-color: gray; border: 1px solid black;", nullptr));
+        errorQuit1Button->setText(QCoreApplication::translate("MainWindow", "Error Quit 1", nullptr));
+        errorQuit2Button->setText(QCoreApplication::translate("MainWindow", "Error Quit 2", nullptr));
+        errorQuit3Button->setText(QCoreApplication::translate("MainWindow", "Error Quit 3", nullptr));
     } // retranslateUi
 
 };
